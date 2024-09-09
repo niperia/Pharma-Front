@@ -1,0 +1,48 @@
+.carousel {
+  position: relative;
+  overflow: hidden;
+}
+
+.carousel-items {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.carousel-card {
+  flex: 0 0 auto;
+  width: calc(100% / 5);
+  box-sizing: border-box;
+}
+
+.carousel-controls {
+  position: absolute;
+  top: 35%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  transform: translateY(-50%);
+}
+
+.dots {
+  margin-top: 20px;
+
+  bottom: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  list-style-type: none;
+  padding: 20px;
+}
+
+.dots li {
+  width: 10px;
+  height: 10px;
+  background: #ccc;
+  border-radius: 50%;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.dots li.active {
+  background: #333;
+}
