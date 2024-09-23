@@ -6,6 +6,8 @@ import Navbar from "@/components/Navbar/Navbar";
 import { useEffect } from "react";
 import Slider from "@/components/Slider/Slider";
 import Link from "next/link";
+import ProductCard from "@/components/Product/Productcard";
+
 import {
   Dialog,
   DialogBackdrop,
@@ -41,31 +43,6 @@ const subCategories = [
   { name: "Hip Bags", href: "#" },
   { name: "Laptop Sleeves", href: "#" },
 ];
-const filters = [
-  // {
-  //   id: "color",
-  //   name: "Color",
-  //   options: [
-  //     { value: "white", label: "White", checked: false },
-  //     { value: "beige", label: "Beige", checked: false },
-  //     { value: "blue", label: "Blue", checked: true },
-  //     { value: "brown", label: "Brown", checked: false },
-  //     { value: "green", label: "Green", checked: false },
-  //     { value: "purple", label: "Purple", checked: false },
-  //   ],
-  // },
-  {
-    id: "Marque",
-    name: "Marque",
-    options: [
-      { value: "LA ROCHE-POSAY", label: "LA ROCHE-POSAY", checked: false },
-      { value: "NUXE", label: "NUXE", checked: false },
-      { value: "VICHY", label: "VICHY", checked: false },
-      { value: "DUCRAY", label: "DUCRAY", checked: false },
-      { value: "BEURER", label: "BEURER", checked: false },
-    ],
-  },
-];
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -77,6 +54,7 @@ export default function Example({ params }) {
   const [brand, setBrand] = useState([]);
   const [price, setPrice] = useState(0);
   const [shouldFetch, setShouldFetch] = useState(true);
+
   useEffect(() => {
     if (!shouldFetch) return;
     let url = `http://localhost:8080/products?category=${params.slug}`;
@@ -323,35 +301,7 @@ export default function Example({ params }) {
                   <div className="w-full max-w-screen-xl">
                     <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
                       {Produits.map((product) => (
-                        <div key={product.id} className="productCard">
-                          <div className="card flex flex-col justify-center p-3 items-center text-center bg-white rounded-lg shadow-2xl">
-                            <div className=" w-40 min-h-40 flex text-center  justify-center">
-                              <img
-                                src={`http://localhost:8080/api/images/${product.picture}`}
-                                className="object-contain object-center"
-                                alt={product.title}
-                              />
-                            </div>
-                            <div className="prod-title mb-4 ">
-                              <p className="text-xl uppercase text-gray-900 font-bold">
-                                {product.name}
-                              </p>
-                              <p className="uppercase text-sm text-gray-400">
-                                {product.marque}
-                              </p>
-                            </div>
-                            <div className="prod-info grid gap-4">
-                              <div className="flex flex-col  justify-between items-center text-gray-900">
-                                <p className="font-bold text-xl px-2">
-                                  {product.price} DH
-                                </p>
-                                <button className="px-6 py-2 mt-2 md:mt-0 transition ease-in duration-200 uppercase rounded-full hover:bg-sky-400 hover:text-white border-2 border-gray-900 focus:outline-none">
-                                  Add to cart
-                                </button>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
+                        <ProductCard product={product} />
                       ))}
                     </div>
                   </div>

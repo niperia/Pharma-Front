@@ -1,6 +1,26 @@
 import React from "react";
+import { useRouter } from "next/navigation";
 
-function Paiement() {
+function Paiement({ step, SetStep, cart }) {
+  const router = useRouter();
+  function createOrder() {
+    cart.map(async (product) => {
+      const data = {
+        addressId: parseInt(localStorage.getItem("adressId")),
+        productId: product.id,
+
+        userId: parseInt(localStorage.getItem("userId")),
+      };
+      await fetch("http://localhost:8080/orders/create", {
+        method: "post",
+        body: JSON.stringify(data),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+    });
+    location.href = "/panier/success";
+  }
   return (
     <div>
       <div class="max-w-4xl mx-auto mt-3 ">
@@ -29,7 +49,6 @@ function Paiement() {
               </label>
               <div class="flex items-center">
                 <input
-                  checked
                   id="default-radio-2"
                   type="radio"
                   value=""
@@ -45,8 +64,6 @@ function Paiement() {
               </div>
               <div class="flex items-center">
                 <input
-                  checked
-                  id="default-radio-2"
                   type="radio"
                   value=""
                   name="default-radio"
@@ -67,6 +84,7 @@ function Paiement() {
             <button
               type="button"
               class="flex w-full items-center justify-center rounded-lg bg-teal-500 px-5 py-2.5 text-sm font-medium text-white hover:bg-primary-800 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+              onClick={createOrder}
             >
               Continuer
             </button>
