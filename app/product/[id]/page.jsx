@@ -44,7 +44,7 @@ export default function ProductPage({ params }) {
           <div className="bg-white shadow-md rounded-lg p-6 flex flex-col lg:flex-row">
             <div className="lg:w-1/2 mb-6 lg:mb-0">
               <img
-                src={`http://localhost:8080/api/images/${product.picture}`}
+                src={`http://localhost:8080/images/${product.picture}`}
                 alt={product.name}
                 className="w-full h-auto rounded-lg shadow-lg"
               />

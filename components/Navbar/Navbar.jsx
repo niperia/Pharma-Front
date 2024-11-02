@@ -34,7 +34,7 @@ export default function Navbar() {
           <div>Panier</div>
         </a>
       </div>
-      <div className="connexion">
+      {/* <div className="connexion">
         <div className="style-icon">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -47,7 +47,7 @@ export default function Navbar() {
           </svg>
         </div>
         <div>Connexion</div>
-      </div>
+      </div> */}
     </nav>
   );
 }

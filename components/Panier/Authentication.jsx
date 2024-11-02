@@ -34,6 +34,7 @@ function Authentication({ step, SetStep }) {
       .then((data) => {
         if (data.token) {
           localStorage.setItem("userId", data.userId);
+          localStorage.setItem("token", data.token);
           SetStep(3);
         }
         console.log(data);

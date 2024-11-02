@@ -1,7 +1,12 @@
+"use client";
 import React from "react";
 import Link from "next/link";
-
+import { useEffect } from "react";
 const PurchaseSuccess = () => {
+  useEffect(() => {
+    localStorage.setItem("cart", "[]");
+  }, []);
+
   return (
     <div className="bg-gray-100 flex items-center justify-center h-screen">
       <div className="bg-white shadow-md rounded-lg p-6 max-w-md text-center">

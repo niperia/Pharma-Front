@@ -64,15 +64,18 @@ const Carousel = () => {
               key={product.id}
               ref={(el) => (itemRefs.current[index] = el)}
             >
-              <img
-                className="card-image"
-                src={`http://localhost:8080/api/images/${product.picture}`}
-                alt={product.name}
-              />
+              <div className="w-50 h-64 flex flex-col items-center justify-center">
+                <img
+                  className="card-image "
+                  src={`http://localhost:8080/images/${product.picture}`}
+                  alt={product.name}
+                />
+              </div>
+
               <div className="text-center">
                 <h3 className="no-underline text-base">{product.name}</h3>
                 <p className="no-underline text-sm font-thin">
-                  {product.brand.name} - ${product.price}
+                  {product.brand.name} - MAD {product.price}
                 </p>
               </div>
             </div>

@@ -18,6 +18,7 @@ function Adresse({ step, SetStep }) {
       body: JSON.stringify(data),
       headers: {
         "Content-Type": "application/json",
+        Authorization: "Bearer " + localStorage.getItem("token"),
       },
     })
       .then((response) => response.text())

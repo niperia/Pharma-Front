@@ -16,7 +16,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={sofia.className}>
+      <body className={sofia.className} suppressHydrationWarning={true}>
         <div className="page-container">{children}</div>
       </body>
     </html>

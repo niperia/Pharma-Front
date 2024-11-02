@@ -2,6 +2,7 @@
 import React from "react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import Link from "next/link";
 function page() {
   const router = useRouter();
   const [name, setName] = useState();
@@ -18,12 +19,50 @@ function page() {
       body: JSON.stringify(data),
       headers: {
         "Content-Type": "application/json",
-        Authorization: "Bearer " + token,
+        Authorization: "Bearer " + localStorage.getItem("admin-token"),
       },
     });
   }
   return (
     <div>
+      <aside
+        id="default-sidebar"
+        className="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0"
+        aria-label="Sidebar"
+      >
+        <div className="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
+          <ul className="space-y-2 font-medium">
+            <li>
+              <Link
+                href="/dashboard/category/add"
+                className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+              >
+                <span className="flex-1 ms-3 whitespace-nowrap">
+                  Add Category
+                </span>
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/dashboard/product/add"
+                className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+              >
+                <span className="flex-1 ms-3 whitespace-nowrap">
+                  Add Products
+                </span>
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/dashboard/brand/add"
+                className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+              >
+                <span className="flex-1 ms-3 whitespace-nowrap">Add Brand</span>
+              </Link>
+            </li>
+          </ul>
+        </div>
+      </aside>
       <div class="max-w-4xl mx-auto mt-3 ">
         <div className="grid grid-cols-1 justify-between text-center mb-4">
           <button className="border-b-2 text-teal-500 border-b-teal-500">

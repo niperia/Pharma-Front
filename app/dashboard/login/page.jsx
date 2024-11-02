@@ -22,7 +22,7 @@ function page() {
       .then((response) => response.json())
       .then((data) => {
         if (data.token) {
-          localStorage.setItem("token", data.token);
+          localStorage.setItem("admin-token", data.token);
 
           router.push("/dashboard/home");
         }

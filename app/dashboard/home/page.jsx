@@ -9,7 +9,12 @@ function Page() {
   useEffect(() => {
     const fetchOrders = async () => {
       try {
-        const response = await fetch("http://localhost:8080/admin/orders");
+        const response = await fetch("http://localhost:8080/admin/orders", {
+          method: "get",
+          headers: {
+            Authorization: "Bearer " + localStorage.getItem("admin-token"),
+          },
+        });
         const data = await response.json();
         setOrders(data);
       } catch (error) {
